@@ -44,6 +44,18 @@ function Sudoku() {
         setGrid(newGrid);
         break;
       case "solve":
+        let flag = true;
+        for(let i=0; i<9; ++i){
+          for(let j=0; j<9; ++j){
+            if(initialGrid.current[i][j] !== 0){
+              flag = false;
+              break;
+            }
+          }
+        }
+        
+        if(flag)
+          copy2DArray(grid, initialGrid.current);
         newGrid = await handleSolve();
         setGrid(newGrid);
         break;
